@@ -51,11 +51,7 @@ De code waarmee de Roomba werkt is heel simpel, het bestaat namelijk uit een lij
 
 Ook heb je een aantal #include nodig in je bestand; namelijk <SoftwareSerial.h> en “roombaDefines.h” die gelinkt is boven aan het bestand. Hiervoor is dit stukje code nodig, hiermee vertel je de Roomba wat de Rx en Tx pin zijn en hoe er gecommuniceerd kan worden met de Roomba.
 
-
-
-
-
-
+<img width="269" alt="Bt_uitleg1" src="https://user-images.githubusercontent.com/45975088/205997259-6c387139-a9bb-4bc6-8511-36d2cf7e3e05.png">
 
 Wij gebruiken de simpelste variant van deze code; opstarten, vooruit rijden, achteruit rijden, draaien en stoppen. Het makkelijkst is om hiervoor void functies te schrijven, die je daarna kan opvragen in de setup of loop. 
 
@@ -67,48 +63,19 @@ Nu de Roomba is opgestart kan je de volgende functies starten, wij gebruiken naa
 
 Als je de code(137) plus 4 data doorstuurt kan je de Roomba vooruit of achteruit laten rijden, halt is daar de makkelijke variant van “0x00” staat gelijk aan “0”, hierdoor stoppen alle rij functies en stopt de Roomba.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img width="454" alt="bt_uitleg3" src="https://user-images.githubusercontent.com/45975088/205997504-e6b957dd-753e-4773-b988-975b1dae9c2c.png">
 
 Nu moet het zijn gelukt om de Roomba te Safe starten, vooruit en achteruit laten rijden. 
 
 Om de Roomba te kunnen laten draaien op zijn plaats gebruiken we drive direct(145), er zijn meerder manieren mogelijk om de Roomba te laten draaien, deze staan allemaal duidelijk vermeld in de iRobot Documentatie.
 
-
-
-
-
-
-
-
-
-
+<img width="270" alt="bt_uitleg4" src="https://user-images.githubusercontent.com/45975088/205997735-5125e4fe-1261-4d3a-a739-5f098ade0fe1.png">
 
 Met driveWheels() kun je bepalen welke kan de Roomba op moet draaien, dit kan in een range van -500 tot 500. Dit kun je aansturen door de 2 waardes te veranderen;
 
-	
-
+<img width="262" alt="bt_uitleg5" src="https://user-images.githubusercontent.com/45975088/205997815-39bb8a83-81c5-48df-82b2-66bae6df30be.png">
 
 Door hier een bepaalde delay aan te geven kan je precies bepalen hoe ver de Roomba mag draaien voordat hij weer vooruit of achteruit rijdt. 
-
 
 Connect Arduino met HC-05 Bluetooth module
 Een uitleg over hoe je de Roomba kan aansturen via een Android. Dit hebben we samen gedaan met een HC-05 bluetooth en een oude Samsung. 
@@ -118,52 +85,19 @@ Om te beginnen had ik op de Android een applicatie geïnstalleerd “Arduino blu
 Om de HC-05 te verbinden kun je dit
 schema hieronder volgen:
 
-
-
-
-
-
-
-
-
-
+![schema_btController_Tom](https://user-images.githubusercontent.com/45975088/205997982-33e098ef-09b5-423f-835d-e961c1d20583.png)
 
 Als je de HC-05 hebt geïnstalleerd kan je deze uitlezen met een string + char. 
 
-
-
-
+<img width="208" alt="Bt_uitleg" src="https://user-images.githubusercontent.com/45975088/205998097-39cdcb0e-ee69-4090-997b-8270e174323d.png">
 
 Met deze 2 functies werkt de Bluetooth module, “inputString” is de data die word verzonden vanuit de Android. Door functies te koppelen aan deze “tekens” is het mogelijk om de Roomba te besturen via een simpele contoller.
 
-
-
-
-
-
-
-
-
+<img width="454" alt="bt_uitleg6" src="https://user-images.githubusercontent.com/45975088/205998328-85244e4f-01cc-4243-bc11-45c67687027d.png">
 
 Het enige wat je dan nodig hebt zijn een heel aantal what-ifs, dat zodra er een A, V, L, R, 0 of 1 wordt verstuurd dat de Roomba weet wat hij moet doen.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img width="271" alt="bt_uitleg7" src="https://user-images.githubusercontent.com/45975088/205998369-b3dbbb6a-f163-4b76-979c-0d9316201b87.png">
 
 De uiteindelijke code zorgt er dan voor dat de Roomba op afstand bestuurd kan worden met een Android via Arduino en een HC-05 bluetooth module. 
 
