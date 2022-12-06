@@ -20,29 +20,7 @@ https://www.instructables.com/Controlling-a-Roomba-Robot-With-Arduino-and-Androi
 RoombaDefines.h geraadpleegd van:
 https://github.com/simoneluconi/Roomba_ESP8266_Ctrl/tree/master/Roomba_ESP8266_Ctrl
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img width="778" alt="roomba_connection01" src="https://user-images.githubusercontent.com/45975088/205992098-a21abd0e-028f-4ba6-a18a-cae4391084fe.png">
 
 
 In het kort
