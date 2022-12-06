@@ -102,10 +102,7 @@ Het enige wat je dan nodig hebt zijn een heel aantal what-ifs, dat zodra er een 
 De uiteindelijke code zorgt er dan voor dat de Roomba op afstand bestuurd kan worden met een Android via Arduino en een HC-05 bluetooth module. 
 
 
-
-
-
-Code C++ 	Controller Arduino & Android
+**Code C++ 	Controller Arduino & Android**
 
 #include <SoftwareSerial.h>
 #include "roombaDefines.h"
@@ -174,7 +171,6 @@ void loop() {
     while (Serial.available() > 0)  
     { junk = Serial.read() ; }      // clear the serial buffer
 
-    
     if(inputString == "R"){ //RECHTS
       driveWheels(-150,150); //range  -500/500
         
@@ -197,7 +193,6 @@ void loop() {
     inputString = "";
   }
 }
-
 
 
 
