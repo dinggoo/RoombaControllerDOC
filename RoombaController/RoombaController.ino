@@ -36,25 +36,24 @@ void halt() {
   Roomba.write(j);   
 }
 void driveWheels(int right, int left) {
-clamp(right, -500, 500);
-clamp(left, -500, 500);
-Roomba.write(145);
-Roomba.write(right >> 8);
-Roomba.write(right);
-Roomba.write(left >> 8);
-Roomba.write(left);
+  clamp(right, -500, 500);
+  clamp(left, -500, 500);
+  Roomba.write(145);
+  Roomba.write(right >> 8);
+  Roomba.write(right);
+  Roomba.write(left >> 8);
+  Roomba.write(left);
 }
 
-void setup()                    // run once, when the sketch starts
-{
+// run once, when the sketch starts
+void setup() {
  Serial.begin(9600); // set the baud rate to 9600, same should be of your Serial Monitor
  Roomba.begin(19200);
  pinMode(ddPin, OUTPUT);
 }
 
+//READOUT incomming bluetooth message, then do task
 void loop() {
-
-  //READOUT incomming bluetooth message, then do task
   if(Serial.available()){
   while(Serial.available())
     {
