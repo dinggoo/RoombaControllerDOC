@@ -22,8 +22,7 @@ https://github.com/simoneluconi/Roomba_ESP8266_Ctrl/tree/master/Roomba_ESP8266_C
 
 <img width="778" alt="roomba_connection01" src="https://user-images.githubusercontent.com/45975088/205992098-a21abd0e-028f-4ba6-a18a-cae4391084fe.png">
 
-
-In het kort
+**In het kort**
 In het komende document geven we uitleg over hoe wij een iRobot Roomba serie 600 (698) hebben aangestuurd met C++ via Arduino en de 7-pin connector op de Roomba zelf.
 
 De basics
@@ -34,11 +33,16 @@ Als je de Roomba hebt verbonden met je mobiele telefoon kan je hem normaal bestu
 De controles en besturing worden duidelijk uitgelegd in de open interface die iRobot zelf publiceert van de Roomba (vooraan in het bestand gelinkt)
 
 Arduino verbinden met de Roomba
-Je kan een Arduino heel simpel verbinden met de Roomba, er zit een female 7-pin connector onder de bovenste kap van de Roomba. Haal je deze kap eraf kan je makkelijk bij de connector. 
+Je kan een Arduino heel simpel verbinden met de Roomba, er zit een female 7-pin connector onder de bovenste kap van de Roomba. Haal je deze kap eraf kan je makkelijk bij de connector.
+
+![pin-connect](https://user-images.githubusercontent.com/45975088/205993383-3e462c48-713d-4bf5-8e05-428909aba4ba.png)
 
 
 Met deze afbeeldingen kan je een Arduino makkelijk verbinden met de Roomba. Hieronder zie je hoe de female 7-pin connector werkt. Je gebruikt 1 voor Power. LET OP dit is geen 5V maar unregulated, GEBRUIK hiervoor de vin pin op je Arduino. Anders doet je Arduino het niet lang meer. Pin 3 en 4 zijn voor Tx en Rx, als je data wilt uploaden naar je Arduino zal je deze uit de Roomba 7-pin connector moeten halen anders zal je een foutmelding krijgen.
 Pin 5 is voor de Baud Rate, het is ook heel belangrijk dat als je een nieuwe code wilt uploaden naar de Arduino dat je de baudrate van de Roomba veranderd naar 19200 (de baudrate staat normaal op 115200), dit doe je door de clean-button op de Roomba 10 a 12 sec in te drukken als de Roomba uit staat tot je een aflopend deuntje hoort, doe je dit niet dan snapt de Roomba de code niet. Als laatste heb je Pin 6, dit is GND en deze kan je simpel verbinden met de GND.
+
+<img width="630" alt="pinUitleg" src="https://user-images.githubusercontent.com/45975088/205993519-c26acdfa-909a-418a-a01a-9d9f3732b657.png">
+
 
 Arduino code 
 Bij het schrijven van de code hebben we veel gebruik gemaakt van de open source documentation van iRobot zelf en een vergelijkbaar document waarmee een Roomba aangestuurd kan worden via Arduino, Bluetooth en Android.
@@ -57,10 +61,7 @@ Wij gebruiken de simpelste variant van deze code; opstarten, vooruit rijden, ach
 
 Om de Roomba te laten starten gebruiken we Safe start, hiervoor stuur je eerst de Roomba start(128) en vervolgens safe Mode (131), als je full control(132) wilt over de Roomba stopt hij niet meer als de Roomba van een trap afrijdt of word opgetild. 
 
-
-
-
-
+<img width="368" alt="startsafe()" src="https://user-images.githubusercontent.com/45975088/205993827-b09006a8-a4ea-4ba7-9bff-82a9366b8ce8.png">
 
 Nu de Roomba is opgestart kan je de volgende functies starten, wij gebruiken naar voren rijden, achteruit rijden en halt. Ze komen allemaal uit de code drive(137) van Roomba. Het nadeel is dat ze alleen maar hexadecimal lezen. Voor de Velocity kan dit maximaal 255, dus 200 is goed zodat je de Roomba langer kan laten rijden. Via een online convertor konden we de waardes vertalen naar Hex, de volgorde ervan is lastig in te vullen, je splitst het nummer op over high en low velocity byte achter de 0x. 
 
